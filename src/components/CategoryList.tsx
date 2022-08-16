@@ -1,4 +1,12 @@
-import { Box, Heading, HStack, Image, Link, Stack } from "@chakra-ui/react";
+import {
+	Box,
+	Heading,
+	HStack,
+	Image,
+	Link,
+	Spacer,
+	Stack,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
@@ -28,12 +36,12 @@ export const CategoryList = () => {
 
 	return (
 		<>
-			<Heading>Top News</Heading>
+			<Heading fontWeight="semibold">{cat}</Heading>
 			{news.map((d, index) => (
 				<Link href={d.url} isExternal>
 					<Box
 						as="button"
-						maxW="800px"
+						minW="100%"
 						m={3}
 						p={3}
 						rounded="xl"
@@ -48,9 +56,11 @@ export const CategoryList = () => {
 									<Box>{d.publishedAt}</Box>
 								</Stack>
 							</Box>
+							<Spacer />
 							<Image
 								src={d.urlToImage}
 								w="250px"
+								maxH="150px"
 								objectFit="cover"
 								key={index}
 							/>

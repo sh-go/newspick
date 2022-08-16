@@ -1,4 +1,12 @@
-import { Box, Heading, HStack, Image, Link, Stack } from "@chakra-ui/react";
+import {
+	Box,
+	Heading,
+	HStack,
+	Image,
+	Link,
+	Spacer,
+	Stack,
+} from "@chakra-ui/react";
 import moment from "moment";
 import { useEffect, useState } from "react";
 
@@ -26,19 +34,19 @@ export const TopList = () => {
 
 	return (
 		<>
-			<Heading>Top News</Heading>
+			<Heading fontWeight="semibold">Headlines</Heading>
 			{news.map((d, index) => (
 				<Link href={d.url} isExternal>
 					<Box
 						as="button"
-						maxW="800px"
+						minW="100%"
 						m={3}
 						p={3}
 						rounded="xl"
 						borderWidth="1px"
 						borderColor="white"
 					>
-						<HStack gap={10}>
+						<HStack>
 							<Box textAlign="left">
 								<Stack>
 									<Box>{d.title}</Box>
@@ -46,6 +54,7 @@ export const TopList = () => {
 									<Box>{d.publishedAt}</Box>
 								</Stack>
 							</Box>
+							<Spacer />
 							<Image
 								src={d.urlToImage}
 								w="250px"

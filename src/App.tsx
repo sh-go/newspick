@@ -1,4 +1,13 @@
-import { Box, Container, Flex, Spacer } from "@chakra-ui/react";
+import {
+	Box,
+	Container,
+	Flex,
+	Heading,
+	HStack,
+	Image,
+	Spacer,
+	Stack,
+} from "@chakra-ui/react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {} from "react-icons/ai";
 
@@ -8,6 +17,7 @@ import { Nav } from "./components/Nav";
 import { TopList } from "./components/TopList";
 import { getNews } from "./api/getNews";
 import { CategoryList } from "./components/CategoryList";
+import { PickUpList } from "./components/PickUpList";
 
 function App() {
 	getNews().then((d) => {
@@ -23,11 +33,14 @@ function App() {
 						<Nav />
 					</Box>
 					<Spacer />
-					<Box flex={3}>
+					<Box flex={3} mr={5}>
 						<Routes>
 							<Route path="/" element={<TopList />} />
 							<Route path="/:cat" element={<CategoryList />} />
 						</Routes>
+					</Box>
+					<Box flex={2} ml={3}>
+						<PickUpList />
 					</Box>
 				</Flex>
 			</Container>

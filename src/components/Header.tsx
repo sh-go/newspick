@@ -5,7 +5,7 @@ export const Header = () => {
 	return (
 		<HStack p={3} mb={5}>
 			<Link to="/">
-				<Heading>News Pick</Heading>
+				<Heading fontWeight="thin">News Pick</Heading>
 			</Link>
 			<Spacer />
 			<Box>Icon</Box>

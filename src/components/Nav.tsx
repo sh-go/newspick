@@ -16,13 +16,13 @@ export const Nav = () => {
 	];
 
 	return (
-		<Stack m={4} p={3} gap={3} color="gray.300">
+		<Stack m={4} p={3} gap={7} color="gray.300">
 			{menuList.map((d) => {
 				return (
 					<Link to={`/${d.menu}`}>
-						<HStack>
+						<HStack _hover={{ color: "white", transition: "0.5s" }}>
 							<Icon w="50px" h="50px" as={d.icon} />
-							<Box fontSize="2xl" fontWeight="thin">
+							<Box fontSize="xl" fontWeight="thin">
 								{d.menu}
 							</Box>
 						</HStack>
