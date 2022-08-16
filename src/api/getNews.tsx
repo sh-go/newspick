@@ -6,7 +6,7 @@ export const getNews = async () => {
 	const topJson = await topRes.json();
 	const topArticles = topJson?.articles;
 
-	const keyword = "software";
+	const keyword = "教育";
 	const sortBy = "popularity";
 	const pickupPageSize = 5;
 	const pickRes = await fetch(

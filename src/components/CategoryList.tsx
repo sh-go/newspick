@@ -47,6 +47,11 @@ export const CategoryList = () => {
 						rounded="xl"
 						borderWidth="1px"
 						borderColor="white"
+						_hover={{
+							cursor: "pointer",
+							opacity: "0.7",
+							transition: "0.3s",
+						}}
 					>
 						<HStack gap={10}>
 							<Box textAlign="left">

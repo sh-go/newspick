@@ -1,4 +1,12 @@
-import { Box, Heading, HStack, Image, Spacer, Stack } from "@chakra-ui/react";
+import {
+	Box,
+	Heading,
+	HStack,
+	Image,
+	Link,
+	Spacer,
+	Stack,
+} from "@chakra-ui/react";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { getNews } from "../api/getNews";
@@ -29,7 +37,6 @@ export const PickUpList = () => {
 		<Stack>
 			<Heading fontWeight="semibold">PickUp!</Heading>
 			<Box
-				as="button"
 				w="95%"
 				m={3}
 				p={3}
@@ -50,23 +57,36 @@ export const PickUpList = () => {
 
 						return (
 							<>
-								<HStack>
-									<Box textAlign="left" fontSize="sm">
-										<Stack>
-											<Box>{d.title}</Box>
-											<Box color="gray.400">
-												{time} 時間前
+								<Link href={d.url} isExternal>
+									<Box
+										as="button"
+										_hover={{
+											cursor: "pointer",
+											opacity: "0.7",
+											transition: "0.3s",
+											textDecoration: "none",
+										}}
+									>
+										<HStack>
+											<Box textAlign="left" fontSize="sm">
+												<Stack>
+													<Box>{d.title}</Box>
+													<Box color="gray.400">
+														{time} 時間前
+													</Box>
+												</Stack>
 											</Box>
-										</Stack>
+											<Spacer />
+											<Image
+												src={d.urlToImage}
+												w="100px"
+												maxH="80px"
+												objectFit="cover"
+												key={index}
+											/>
+										</HStack>
 									</Box>
-									<Spacer />
-									<Image
-										src={d.urlToImage}
-										w="100px"
-										objectFit="cover"
-										key={index}
-									/>
-								</HStack>
+								</Link>
 							</>
 						);
 					})}
