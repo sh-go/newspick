@@ -1,83 +1,38 @@
-import { Box, Container, HStack, Image, Spacer } from "@chakra-ui/react";
-import moment from "moment";
-import { useEffect, useState } from "react";
+import { Box, Container, Flex, Spacer } from "@chakra-ui/react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {} from "react-icons/ai";
 
 import "./App.css";
 import { Header } from "./components/Header";
+import { Nav } from "./components/Nav";
+import { TopList } from "./components/TopList";
+import { getNews } from "./api/getNews";
+import { CategoryList } from "./components/CategoryList";
 
 function App() {
 	getNews().then((d) => {
 		console.log(d.props);
 	});
 
-	const initState = [
-		{
-			author: "",
-			title: "",
-			publishedAt: "",
-			url: "",
-			urlToImage: "",
-		},
-	];
-	const [news, setNews] = useState(initState);
-
-	useEffect(() => {
-		getNews()
-			.then((d) => setNews(d.props.topArticles))
-			.catch((e) => {
-				throw new Error(e);
-			});
-	}, []);
-
 	return (
 		<BrowserRouter>
-			<Container maxW="1200px" p={3}>
+			<Container maxW="100%" p={3}>
 				<Header />
-				{news.map((d, index) => (
-					<Box
-						m={3}
-						p={3}
-						rounded="md"
-						borderWidth="thin"
-						borderColor="white"
-					>
-						<HStack>
-							<Box>
-								{d.title +
-									" " +
-									moment(d.publishedAt || moment.now())
-										.fromNow()
-										.slice(0, 1) +
-									"時間前"}
-							</Box>
-							<Spacer />
-							<Image
-								src={d.urlToImage}
-								boxSize="150px"
-								w="230px"
-								objectFit="cover"
-								key={index}
-							/>
-						</HStack>
+				<Flex>
+					<Box flex={1} position="fixed">
+						<Nav />
 					</Box>
-				))}
+					<Spacer />
+					<Box flex={3}>
+						<Routes>
+							<Route path="/" element={<TopList />} />
+							<Route path="/:cat" element={<CategoryList />} />
+						</Routes>
+					</Box>
+				</Flex>
 			</Container>
 		</BrowserRouter>
 	);
 }
 
 export default App;
-
-export const getNews = async () => {
-	const newsSize = 10;
-	const topRes = await fetch(
-		`https://newsapi.org/v2/top-headlines?country=jp&pageSize=${newsSize}&apiKey=41ad93d4907447039d90b87be10927cd`
-	);
-	const topJson = await topRes.json();
-	const topArticles = topJson?.articles;
-
-	return {
-		props: { topArticles },
-	};
-};
