@@ -15,6 +15,7 @@ import { getNews } from "../api/getNews";
 export const TopList = () => {
 	const initState = [
 		{
+			source: { name: "" },
 			author: "",
 			title: "",
 			publishedAt: "",
@@ -64,7 +65,16 @@ export const TopList = () => {
 								<Box textAlign="left">
 									<Stack>
 										<Box>{d.title}</Box>
-										<Box color="gray.400">{time}</Box>
+										<Box>
+											{d.source.name}
+											<Box
+												as="span"
+												color="gray.400"
+												ml={3}
+											>
+												{time}
+											</Box>
+										</Box>
 									</Stack>
 								</Box>
 								<Spacer />

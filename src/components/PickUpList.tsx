@@ -14,6 +14,7 @@ import { getNews } from "../api/getNews";
 export const PickUpList = () => {
 	const initState = [
 		{
+			source: { name: "" },
 			author: "",
 			title: "",
 			publishedAt: "",
@@ -71,8 +72,15 @@ export const PickUpList = () => {
 											<Box textAlign="left" fontSize="sm">
 												<Stack>
 													<Box>{d.title}</Box>
-													<Box color="gray.400">
-														{time} 時間前
+													<Box>
+														{d.source.name}
+														<Box
+															as="span"
+															color="gray.400"
+															ml={3}
+														>
+															{time} 時間前
+														</Box>
 													</Box>
 												</Stack>
 											</Box>
