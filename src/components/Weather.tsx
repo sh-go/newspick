@@ -54,7 +54,6 @@ export const Weather = () => {
 			<Heading fontWeight="semibold">Weather News</Heading>
 			<Box
 				w="95%"
-				m={3}
 				p={3}
 				rounded="xl"
 				borderWidth="1px"
@@ -79,13 +78,20 @@ export const Weather = () => {
 					<Image
 						src={`http://openweathermap.org/img/wn/${currentWeatherIcon}d@2x.png`}
 					/>
+					<Spacer />
 					<Box>
 						<HStack>
 							{dailyWeather.map((d, index) => {
 								const dailyWeatherIcon =
 									d.weather[0].icon.slice(0, 2);
+								const datetime = new Date(d.dt * 1000);
 								return (
 									<VStack>
+										<Box fontSize="13px">
+											{datetime
+												.toDateString()
+												.slice(0, 3)}
+										</Box>
 										<Image
 											key={index}
 											src={`http://openweathermap.org/img/wn/${dailyWeatherIcon}d.png`}
