@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Heading, Spacer, Stack } from "@chakra-ui/react";
+import { Box, Container, Flex, Spacer, Stack } from "@chakra-ui/react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {} from "react-icons/ai";
 
