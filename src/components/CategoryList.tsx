@@ -82,8 +82,9 @@ export const CategoryList = () => {
 								<Spacer />
 								<Image
 									src={d.urlToImage}
-									w="250px"
-									maxH="150px"
+									h="130px"
+									w="200px"
+									minW="200px"
 									objectFit="cover"
 									key={index}
 								/>

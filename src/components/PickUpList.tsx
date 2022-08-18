@@ -87,8 +87,9 @@ export const PickUpList = () => {
 											<Spacer />
 											<Image
 												src={d.urlToImage}
+												minW="100px"
 												w="100px"
-												maxH="80px"
+												h="80px"
 												objectFit="cover"
 												key={index}
 											/>
