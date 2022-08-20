@@ -9,4 +9,11 @@ export const theme = extendTheme({
 			},
 		},
 	},
+	components: {
+		Drawer: {
+			defaultProps: {
+				colorScheme: "black",
+			},
+		},
+	},
 });
