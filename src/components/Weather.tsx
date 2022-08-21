@@ -76,7 +76,7 @@ export const Weather = () => {
 						</Stack>
 					</Box>
 					<Image
-						src={`http://openweathermap.org/img/wn/${currentWeatherIcon}d@2x.png`}
+						src={`https://openweathermap.org/img/wn/${currentWeatherIcon}d@2x.png`}
 					/>
 					<Spacer />
 					<Box>
