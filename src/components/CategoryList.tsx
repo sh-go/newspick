@@ -7,13 +7,13 @@ import {
 	Spacer,
 	Stack,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 
 import { getNewsCategory } from "../api/getNewsCategory";
 
-export const CategoryList = () => {
+export const CategoryList = memo(() => {
 	const initState = [
 		{
 			source: { name: "" },
@@ -96,4 +96,4 @@ export const CategoryList = () => {
 			})}
 		</Box>
 	);
-};
+});

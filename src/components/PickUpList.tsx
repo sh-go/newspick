@@ -8,10 +8,10 @@ import {
 	Stack,
 } from "@chakra-ui/react";
 import moment from "moment";
-import { useEffect, useState } from "react";
-import { getNews } from "../api/getNews";
+import { memo, useEffect, useState } from "react";
+import { getPickUpNews } from "../api/getPickUpNews";
 
-export const PickUpList = () => {
+export const PickUpList = memo(() => {
 	const initState = [
 		{
 			source: { name: "" },
@@ -25,7 +25,7 @@ export const PickUpList = () => {
 	const [pickNews, setPickNews] = useState(initState);
 
 	useEffect(() => {
-		getNews()
+		getPickUpNews()
 			.then((d) => {
 				setPickNews(d.props.pickArticles);
 			})
@@ -33,6 +33,8 @@ export const PickUpList = () => {
 				throw new Error(e);
 			});
 	}, []);
+
+	console.log("PickUpが更新！");
 
 	return (
 		<Stack>
@@ -103,4 +105,4 @@ export const PickUpList = () => {
 			</Box>
 		</Stack>
 	);
-};
+});

@@ -7,10 +7,10 @@ import {
 	Stack,
 	VStack,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { getWeather } from "../api/getWeather";
 
-export const Weather = () => {
+export const Weather = memo(() => {
 	const initState = {
 		current: {
 			temp: 0,
@@ -41,7 +41,7 @@ export const Weather = () => {
 			});
 	}, []);
 
-	console.log(weatherNews);
+	console.log("rendering Weather!!");
 
 	const currentWeatherMain = weatherNews.current.weather[0].main;
 	const currentWeatherIcon = weatherNews.current.weather[0].icon.slice(0, 2);
@@ -117,4 +117,4 @@ export const Weather = () => {
 			</Box>
 		</>
 	);
-};
+});

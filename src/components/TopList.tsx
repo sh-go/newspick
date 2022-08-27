@@ -8,11 +8,11 @@ import {
 	Stack,
 } from "@chakra-ui/react";
 import moment from "moment";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 import { getNews } from "../api/getNews";
 
-export const TopList = () => {
+export const TopList = memo(() => {
 	const initState = [
 		{
 			source: { name: "" },
@@ -32,6 +32,8 @@ export const TopList = () => {
 				throw new Error(e);
 			});
 	}, []);
+
+	console.log("実行されました！");
 
 	return (
 		<Box mt={12}>
@@ -94,4 +96,4 @@ export const TopList = () => {
 			})}
 		</Box>
 	);
-};
+});

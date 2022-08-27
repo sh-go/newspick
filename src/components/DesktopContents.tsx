@@ -1,4 +1,5 @@
 import { Box, Container, Flex, Spacer, Stack } from "@chakra-ui/react";
+import { memo } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { CategoryList } from "./CategoryList";
@@ -8,7 +9,7 @@ import { PickUpList } from "./PickUpList";
 import { TopList } from "./TopList";
 import { Weather } from "./Weather";
 
-export const DesktopContents = () => {
+export const DesktopContents = memo(() => {
 	return (
 		<>
 			<Header />
@@ -34,4 +35,4 @@ export const DesktopContents = () => {
 			</Container>
 		</>
 	);
-};
+});
