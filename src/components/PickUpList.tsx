@@ -34,8 +34,6 @@ export const PickUpList = memo(() => {
 			});
 	}, []);
 
-	console.log("PickUpが更新！");
-
 	return (
 		<Stack>
 			<Heading fontWeight="semibold">PickUp!</Heading>
