@@ -7,13 +7,13 @@ import {
 	Spacer,
 	Stack,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 
 import { getNewsCategory } from "../api/getNewsCategory";
 
-export const CategoryList = () => {
+export const CategoryList = memo(() => {
 	const initState = [
 		{
 			source: { name: "" },
@@ -36,7 +36,7 @@ export const CategoryList = () => {
 	}, [cat]);
 
 	return (
-		<>
+		<Box mt={12}>
 			<Heading fontWeight="semibold">{cat}</Heading>
 			{news.map((d, index) => {
 				const time =
@@ -51,7 +51,8 @@ export const CategoryList = () => {
 					<Link href={d.url} isExternal>
 						<Box
 							as="button"
-							minW="100%"
+							minW="95%"
+							maxW="95%"
 							m={3}
 							p={3}
 							rounded="xl"
@@ -63,7 +64,7 @@ export const CategoryList = () => {
 								transition: "0.3s",
 							}}
 						>
-							<HStack gap={10}>
+							<HStack>
 								<Box textAlign="left">
 									<Stack>
 										<Box>{d.title}</Box>
@@ -83,8 +84,8 @@ export const CategoryList = () => {
 								<Image
 									src={d.urlToImage}
 									h="130px"
-									w="200px"
-									minW="200px"
+									w="40%"
+									minW="40%"
 									objectFit="cover"
 									key={index}
 								/>
@@ -93,6 +94,6 @@ export const CategoryList = () => {
 					</Link>
 				);
 			})}
-		</>
+		</Box>
 	);
-};
+});
